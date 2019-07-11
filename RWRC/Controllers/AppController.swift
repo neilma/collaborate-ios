@@ -58,8 +58,7 @@ final class AppController {
       fatalError("Cannot layout app with a nil window.")
     }
     
-    FirebaseApp.configure()
-    
+//    FirebaseApp.configure()
     self.window = window
     window.tintColor = .primary
     window.backgroundColor = .white

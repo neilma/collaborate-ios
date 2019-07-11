@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>98139542098-kupeuku164aibsoh426pp5fg6b0edic4.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.98139542098-kupeuku164aibsoh426pp5fg6b0edic4</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBws7uX4dz3cZ21G8yUu_wI8YuOajBSnLk</string>
+	<key>GCM_SENDER_ID</key>
+	<string>98139542098</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.zdgroup.collaborate</string>
+	<key>PROJECT_ID</key>
+	<string>collaborate-a1ecd</string>
+	<key>STORAGE_BUCKET</key>
+	<string>collaborate-a1ecd.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:98139542098:ios:113e997fabdc1dbe</string>
+	<key>DATABASE_URL</key>
+	<string>https://collaborate-a1ecd.firebaseio.com</string>
+</dict>
+</plist>

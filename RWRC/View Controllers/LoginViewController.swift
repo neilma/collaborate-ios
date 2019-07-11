@@ -27,8 +27,10 @@
 /// THE SOFTWARE.
 
 import UIKit
+import Firebase
+import GoogleSignIn
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, GIDSignInUIDelegate {
   
   @IBOutlet var actionButton: UIButton!
   @IBOutlet var fieldBackingView: UIView!
@@ -54,6 +56,7 @@ class LoginViewController: UIViewController {
     )
     
     registerForKeyboardNotifications()
+    GIDSignIn.sharedInstance().uiDelegate = self
   }
   
   override func viewDidAppear(_ animated: Bool) {
@@ -90,13 +93,17 @@ class LoginViewController: UIViewController {
   }
   
   private func signIn() {
+    GIDSignIn.sharedInstance().signIn()
+    
+    // TODO(developer) Configure the sign-in button look/feel
+    // ...
     guard let name = displayNameField.text, !name.isEmpty else {
       showMissingNameAlert()
       return
     }
-    
+
     displayNameField.resignFirstResponder()
-    
+
     AppSettings.displayName = name
   }
   

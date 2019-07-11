@@ -8,6 +8,7 @@ target 'RWRC' do
   pod 'Firebase/Auth'
   pod 'Firebase/Storage'
   pod 'Firebase/Firestore'
+  pod 'GoogleSignIn'
   post_install do |installer|
       installer.pods_project.targets.each do |target|
           if target.name == 'MessageKit'
