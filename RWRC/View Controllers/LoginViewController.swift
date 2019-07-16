@@ -94,17 +94,14 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
   
   private func signIn() {
     GIDSignIn.sharedInstance().signIn()
-    
     // TODO(developer) Configure the sign-in button look/feel
     // ...
-    guard let name = displayNameField.text, !name.isEmpty else {
-      showMissingNameAlert()
-      return
-    }
-
-    displayNameField.resignFirstResponder()
-
-    AppSettings.displayName = name
+//    guard let name = GIDSignIn.sharedInstance().currentUser.profile.name, !name.isEmpty else {
+//      showMissingNameAlert()
+//      return
+//    }
+//    displayNameField.resignFirstResponder()
+//    AppSettings.displayName = name
   }
   
   private func showMissingNameAlert() {

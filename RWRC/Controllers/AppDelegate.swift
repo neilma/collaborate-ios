@@ -74,6 +74,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
       }
       // User is signed in
       // ...
+      let name = GIDSignIn.sharedInstance().currentUser.profile?.name
+//        showMissingNameAlert()
+      AppSettings.displayName = name
     }
   }
   
