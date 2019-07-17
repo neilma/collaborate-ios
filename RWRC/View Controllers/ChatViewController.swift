@@ -37,6 +37,8 @@ final class ChatViewController: MessagesViewController {
   private let channel: Channel
   private var messages: [Message] = []
   private var messageListener: ListenerRegistration?
+  private let db = Firestore.firestore()
+  private var reference: CollectionReference?
 
   init(user: User, channel: Channel) {
     self.user = user
@@ -46,11 +48,32 @@ final class ChatViewController: MessagesViewController {
     title = channel.name
   }
   
+  deinit {
+    messageListener?.remove()
+  }
+  
   required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
   
   override func viewDidLoad() {
+    guard let id = channel.id else {
+      navigationController?.popViewController(animated: true)
+      return
+    }
+    
+    reference = db.collection(["channels", id, "thread"].joined(separator: "/"))
+    messageListener = reference?.addSnapshotListener { querySnapshot, error in
+      guard let snapshot = querySnapshot else {
+        print("Error listening for channel updates: \(error?.localizedDescription ?? "No error")")
+        return
+      }
+      
+      snapshot.documentChanges.forEach { change in
+        self.handleDocumentChange(change)
+      }
+    }
+
     super.viewDidLoad()
     
     navigationItem.largeTitleDisplayMode = .never
@@ -65,7 +88,17 @@ final class ChatViewController: MessagesViewController {
   }
   
   // MARK: - Helpers
-  
+  private func save(_ message: Message) {
+    reference?.addDocument(data: message.representation) { error in
+      if let e = error {
+        print("Error sending message: \(e.localizedDescription)")
+        return
+      }
+      
+      self.messagesCollectionView.scrollToBottom()
+    }
+  }
+
   private func insertNewMessage(_ message: Message) {
     guard !messages.contains(message) else {
       return
@@ -85,12 +118,19 @@ final class ChatViewController: MessagesViewController {
       }
     }
   }
-
-  override func viewDidAppear(_ animated: Bool) {
-    super.viewDidAppear(animated)
+  
+  private func handleDocumentChange(_ change: DocumentChange) {
+    guard let message = Message(document: change.document) else {
+      return
+    }
     
-    let testMessage = Message(user: user, content: "Lebron da GOAT?")
-    insertNewMessage(testMessage)
+    switch change.type {
+    case .added:
+      insertNewMessage(message)
+      
+    default:
+      break
+    }
   }
 }
 
@@ -187,7 +227,17 @@ extension ChatViewController: MessagesLayoutDelegate {
 // MARK: - MessageInputBarDelegate
 
 extension ChatViewController: MessageInputBarDelegate {
-  
+  func messageInputBar(_ inputBar: MessageInputBar, didPressSendButtonWith text: String) {
+    
+    // 1
+    let message = Message(user: user, content: text)
+    
+    // 2
+    save(message)
+    
+    // 3
+    inputBar.inputTextView.text = ""
+  }
 }
 
 // MARK: - UIImagePickerControllerDelegate
