@@ -52,6 +52,7 @@
 		6B46E44FFE5424DB91C4A5AE /* Pods-RWRC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RWRC.release.xcconfig"; path = "Pods/Target Support Files/Pods-RWRC/Pods-RWRC.release.xcconfig"; sourceTree = "<group>"; };
 		94984FD704383917A0A022C8 /* Pods_RWRC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RWRC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1C10D0422D59E840004B6F0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C1C10D0622E673E00004B6F0 /* RWRC.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RWRC.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +109,7 @@
 		48AC74C520A66C2A00AA1788 /* RWRC */ = {
 			isa = PBXGroup;
 			children = (
+				C1C10D0622E673E00004B6F0 /* RWRC.entitlements */,
 				48AC74DA20A66C9700AA1788 /* Controllers */,
 				4859775820A68C9B00429CB3 /* Extensions */,
 				48AC74D920A66C8600AA1788 /* Models */,
@@ -205,6 +207,11 @@
 					48AC74C220A66C2A00AA1788 = {
 						CreatedOnToolsVersion = 9.3;
 						LastSwiftMigration = 1000;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -450,6 +457,7 @@
 			baseConfigurationReference = 138B8A2C43BFE3C4675D8981 /* Pods-RWRC.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = RWRC/RWRC.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MRN8ZCA88P;
 				INFOPLIST_FILE = "$(SRCROOT)/RWRC/Supporting Files/Info.plist";
@@ -458,7 +466,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.razeware.RWRC;
+				PRODUCT_BUNDLE_IDENTIFIER = au.com.zdgroup;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -470,6 +478,7 @@
 			baseConfigurationReference = 6B46E44FFE5424DB91C4A5AE /* Pods-RWRC.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = RWRC/RWRC.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MRN8ZCA88P;
 				INFOPLIST_FILE = "$(SRCROOT)/RWRC/Supporting Files/Info.plist";
@@ -478,7 +487,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.razeware.RWRC;
+				PRODUCT_BUNDLE_IDENTIFIER = au.com.zdgroup;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;

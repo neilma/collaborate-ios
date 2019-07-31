@@ -79,7 +79,7 @@ final class AppController {
   
   // MARK: - Notifications
   
-  @objc internal func userStateDidChange() {
+  @objc func userStateDidChange() {
     DispatchQueue.main.async {
       self.handleAppState()
     }
